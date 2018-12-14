@@ -6,19 +6,22 @@ import { withAuth } from '../providers/AuthProvider';
 class Signup extends Component {
 
   state = {
-    username: "",
+    name: "",
+    email: "",
     password: "",
   };
 
   handleFormSubmit = (event) => {
     event.preventDefault();
-    const username = this.state.username;
+    const name = this.state.name;
+    const email = this.state.email;
     const password = this.state.password;
 
-    auth.signup({ username, password })
+    auth.signup({ name, email, password })
       .then( (user) => {
         this.setState({
-            username: "",
+            name: "",
+            email: "",
             password: "",
         });
         this.props.setUser(user)
@@ -32,19 +35,22 @@ class Signup extends Component {
   }
 
   render() {
-    const { username, password } = this.state;
+    const { name, email, password } = this.state;
     return (
       <div>
+        <h1 className="register-title">Register to Survyay!</h1>
         <form onSubmit={this.handleFormSubmit}>
-          <label>Username:</label>
-          <input type="text" name="username" value={username} onChange={this.handleChange}/>
+          <label>Name:</label>
+          <input type="text" name="name" value={name} onChange={this.handleChange} placeholder="John Doe" required={true}/>
+          <label>Email:</label>
+          <input type="email" name="email" value={email} onChange={this.handleChange} placeholder="example@example.com" required={true}/>
           <label>Password:</label>
-          <input type="password" name="password" value={password} onChange={this.handleChange} />
-          <input type="submit" value="Signup" />
+          <input type="password" name="password" value={password} onChange={this.handleChange} placeholder="Must have at least 6 characters" required={true}/>
+          <input className="submit" type="submit" value="SIGNUP" />
         </form>
 
-        <p>Already have account? 
-          <Link to={"/login"}> Login</Link>
+        <p>Already have an account? 
+          <Link className="link" to={"/login"}> Login</Link>
         </p>
 
       </div>
