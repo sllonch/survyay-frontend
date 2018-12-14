@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import Menu from '../components/Menu'
+import { withAuth } from '../providers/AuthProvider';
 
 class NewSurvey extends Component {
 
@@ -7,9 +8,10 @@ class NewSurvey extends Component {
     return (
       <div className="new-survey">
         <p>New Survey page</p>
+        <Menu />
       </div>
     );
   }
 }
 
-export default NewSurvey;
+export default withAuth(NewSurvey);

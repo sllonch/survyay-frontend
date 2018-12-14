@@ -23,7 +23,7 @@ class Search extends Component {
       <div className="search">
       <form onSubmit={this.handleSubmit}>
         <input id="survey-search" type="text" value={this.state.searchValue} onChange={this.handleForm} name="searchValue" placeholder="Type the title of a survey" />
-        <input id="survey-btn" type="submit" value="Search"/>
+        <input id="survey-search-btn" type="submit" value="Search"/>
         </form>
       </div>
     );

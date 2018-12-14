@@ -12,7 +12,13 @@ class Survey {
     return this.survey.get('/API/surveys')
       .then(({ data }) => data);
   }
+
+  detail(id) {
+    return this.survey.get(`/API/survey/${id}`)
+      .then(({ data }) => data);
+  }
 }
+
 /*
 survey.list()
 survey.detail(idSurvey)

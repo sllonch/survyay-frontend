@@ -11,7 +11,7 @@ class Surveys extends Component {
     surveys: [],
     searchValue: '',
     error: false,
-    isLoading : true,
+    isLoading : true
   }
 
   componentDidMount () {
@@ -38,17 +38,28 @@ class Surveys extends Component {
     const surveys2 = surveys.filter(survey => {
       return survey.title.includes(searchValue);
     });
-    console.log(surveys)
-    if (surveys.length === 0) {
+    if (surveys.length === 0) { // First render
       return (
         <div>
           <h1>Welcome {this.props.user.name}</h1>
           <div>You do not have any survey</div>
+          <Menu />
         </div>
       )
     }
     if (error) {
       return <div>Error during the connection</div>
+    }
+    if (surveys2.length === 0) {
+      return (
+      <div>
+        <h1>Welcome {this.props.user.name}</h1>
+        <Search onSubmit={this.searchSurveys} />
+        <h2>Survey List:</h2>
+        <div>No surveys matched your search criteria</div>
+        <Menu />
+      </div>
+      )
     }
     return (
       <div>

@@ -8,16 +8,16 @@ class Home extends Component {
 
   renderIsLoggedIn = () => {
     return <div>
-      <Link to='/survey'><button className="survey-btn">Go to HOME</button></Link>
-      <button className="logout-btn"><p onClick={this.props.logout}>Logout</p></button>
+      <Link to='/surveys'><button className="btn">Go to HOME</button></Link>
+      <button className="btn"><p onClick={this.props.logout}>Logout</p></button>
       </div>
   }
 
   renderIsNotLoggedIn = () => {
     return <div>
-      <Link to='/login'><button className="login-btn">LOGIN</button></Link>
+      <Link to='/login'><button className="btn">LOGIN</button></Link>
       <p className="signup-helper">New to Survyay?</p>
-      <Link to='/signup'><button className="signup-btn">SIGNUP</button></Link>
+      <Link to='/signup'><button className="btn">SIGNUP</button></Link>
     </div>
   }
 
