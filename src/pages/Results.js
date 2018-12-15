@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import SurveyService from '../lib/survey-service';
 import Menu from '../components/Menu'
+import Chart from '../components/Chart'
 import { withAuth } from '../providers/AuthProvider';
 
 class Results extends Component {
@@ -38,13 +39,13 @@ class Results extends Component {
       <div className="results-page">
         <h2 className="results-title">Results:</h2>
         <p className="survey-title">{survey.title}</p> 
-        <canvas id="myChart" width="100" height="100"></canvas>
-        <div className="answer-list">
+        <Chart survey={survey}/>
+        <div id="answer-list">
             {survey.answers.map((answer, index) => {
               return (
                 <div key={`id=${index}`}>
                   <div className="answer">
-                    <label>Answer {answer.answerTitle} | Votes: {answer.votes}</label>
+                    <label>{answer.answerTitle} | Votes: {answer.votes}</label>
                   </div>
                 </div>
               );
