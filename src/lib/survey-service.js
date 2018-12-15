@@ -17,15 +17,20 @@ class Survey {
     return this.survey.get(`/API/survey/${id}`)
       .then(({ data }) => data);
   }
+
+  update(id, answer, userId) {
+    return this.survey.put(`/API/survey/${id}/vote`, {answer, userId})
+      .then(({ data }) => data);
+  }
 }
 
 /*
-survey.list()
-survey.detail(idSurvey)
-survey.search( { user: string, text: string } )
+survey.list() DONE
+survey.detail(idSurvey) DONE
+survey.search( { user: string, text: string } ) DONE IN FE
 survey.create( { surveyTitle: string, answers: array } )
 survey.read(idSurvey)
-survey.update({idSurvey, idAnswer})
+survey.update({idSurvey, idAnswer}) DONE
 survey.results(idSurvey)
 */
 

@@ -12,7 +12,9 @@ class AnswerList extends Component {
         {this.props.answers.map((answer, index) => {
           return (
             <div key={`id=${index}`}>
-              <Answer answer={answer} id={index} />
+               <div className="answer">
+                 <label><input type="radio" id={index} value={answer} name="answer" unchecked="true" />{answer}</label>
+              </div>
             </div>
           );
         })}

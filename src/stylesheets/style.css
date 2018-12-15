@@ -151,7 +151,7 @@ p {
   background-color: white;
 }
 
-.survey-title{
+.survey-list-title{
   padding: 0 15px;
   text-align: center;
   font-size: 16px;
@@ -203,7 +203,51 @@ p {
   float: right;
 }
 
-/* ---- forms ---- */
+/* ---- Survey page ---- */
+
+#survey-form label {
+  padding: 0px;
+  margin: 0px;
+  font-size: 26px;
+  font-family: "Raleway-Medium", Helvetica, Arial, sans-serif;
+}
+
+#survey-form input {
+  font-size: 16px;
+  border: 1px solid #000;
+  height: 20px;
+  width: 10%;
+  margin: 0px;
+  padding: 0px;
+}
+
+.answer {
+  margin-bottom: 20px;
+}
+
+.question-title {
+  font-size: 34px;
+}
+
+.survey-title {
+  font-size: 30px;
+  margin-bottom: 0.83em;
+  line-height: 1.2;
+}
+
+#vote.submit {
+  width: 100%;
+  height: 40px;
+}
+
+/* ---- Results page ---- */
+
+.results-title {
+  font-size: 34px;
+}
+
+
+/* ---- Login and Signup forms ---- */
 
 form.is-processing {
 	opacity: 0.5;
@@ -216,7 +260,6 @@ form .field {
 form label {
 	display: block;
 	margin-bottom: 10px;
-  font-style: bold;
   font-family: "Raleway-Heavy", Helvetica, Arial, sans-serif;
 }
 
