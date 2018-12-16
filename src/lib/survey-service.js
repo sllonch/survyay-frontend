@@ -22,6 +22,12 @@ class Survey {
     return this.survey.put(`/API/survey/${id}/vote`, {answer, userId})
       .then(({ data }) => data);
   }
+
+  create(survey, owner) {
+    const { participants, title, answers} = survey;
+    return this.survey.post('API/survey/new', { participants, title, answers, owner })
+    .then(({ data }) => data);
+  }
 }
 
 /*
