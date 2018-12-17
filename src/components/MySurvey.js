@@ -33,7 +33,7 @@ class MySurvey extends Component {
     return (
       <div className="survey">
         <p className="survey-list-title">{this.props.survey.title}</p>
-        <Link className="link" to={`/surveys/${this.props.survey._id}/results`}><button onClick={this.handleOnClick} className="survey-results-btn">See Results</button></Link>
+        <Link className="link" to={`/surveys/${this.props.survey._id}/results`}><button className="survey-results-btn">See Results</button></Link>
         <button onClick={this.handleOnClick} className="goto-survey-btn">Delete</button>
       </div>
     );
