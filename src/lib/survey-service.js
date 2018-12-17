@@ -13,6 +13,11 @@ class Survey {
       .then(({ data }) => data);
   }
 
+  listCreated() {
+    return this.survey.get('/API/mysurveys')
+      .then(({ data }) => data);
+  }
+
   detail(id) {
     return this.survey.get(`/API/survey/${id}`)
       .then(({ data }) => data);

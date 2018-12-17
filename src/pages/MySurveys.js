@@ -15,7 +15,7 @@ class MySurveys extends Component {
   }
 
   componentDidMount () {
-    SurveyService.list()
+    SurveyService.listCreated()
       .then((surveys) => {
         this.setState({
           surveys,
