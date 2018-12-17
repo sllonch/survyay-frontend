@@ -1,14 +1,9 @@
 import React, { Component } from "react";
-import { Bar, Line, Pie } from "react-chartjs-2";
+import { Bar, Pie } from "react-chartjs-2";
 
 class Chart extends Component {
   constructor(props) {
     super(props);
-    // console.log(props);
-    // console.log(props.survey.answers)
-    // console.log(props.survey.answers[0].answerTitle)
-    // console.log(props.survey.answers[1].answerTitle)
-    // console.log(props.survey.answers[2].answerTitle)
 
     this.state = {
       chartData: {

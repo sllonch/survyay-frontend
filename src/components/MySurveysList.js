@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import Survey from './Survey'
+import MySurvey from './MySurvey'
 import { withAuth } from '../providers/AuthProvider';
 
-class SurveyList extends Component {
+class MySurveysList extends Component {
   render() {
     if (this.props.isLoading) {
       return <div>Loading...</div>
@@ -12,7 +12,7 @@ class SurveyList extends Component {
         {this.props.surveys.map((survey) => {
           return (
             <div key={`id=${survey._id}`}>
-              <Survey survey={survey} />
+              <MySurvey survey={survey} />
             </div>
           );
         })}
@@ -21,4 +21,4 @@ class SurveyList extends Component {
   }
 }
 
-export default withAuth(SurveyList);
+export default withAuth(MySurveysList);

@@ -78,7 +78,7 @@ class Survey extends Component {
               );
             })}
           </div>
-          <input id="vote" className="submit" type="submit" value="VOTE" />
+          <input id="vote" className="submit" type="submit" value="Vote" />
         </form>
         <Menu />
       </div>

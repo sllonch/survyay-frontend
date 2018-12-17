@@ -8,7 +8,7 @@ class Home extends Component {
 
   renderIsLoggedIn = () => {
     return <div>
-      <Link to='/surveys'><button className="btn">Go to HOME</button></Link>
+      <Link to='/surveys'><button className="btn">Go to "Survey list"</button></Link>
       <button className="btn"><p onClick={this.props.logout}>Logout</p></button>
       </div>
   }

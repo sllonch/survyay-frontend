@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import auth from '../lib/auth-service';
 import { withAuth } from '../providers/AuthProvider';
+
 class Login extends Component {
   state = {
     email: "",
@@ -27,7 +29,7 @@ class Login extends Component {
     const { email, password } = this.state;
     return (
       <div>
-      <h1 className="login-title">Welcome back</h1>
+      <h1 className="login-title">Welcome to Survyay!</h1>
       <form onSubmit={this.handleFormSubmit}>
         <label>Email:</label>
         <input type="email" name="email" value={email} onChange={this.handleChange}/>
@@ -35,6 +37,11 @@ class Login extends Component {
         <input type="password" name="password" value={password} onChange={this.handleChange} />
         <input className="submit" type="submit" value="LOGIN" />
       </form>
+
+        <p>New to Survyay? 
+          <Link className="link" to={"/signup"}> Signup</Link>
+        </p>
+
       </div>
     )
   }

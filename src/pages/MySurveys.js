@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import SurveyService from '../lib/survey-service';
 import Search from '../components/Search'
-import SurveyList from '../components/SurveyList'
+import MySurveysList from '../components/MySurveysList'
 import Menu from '../components/Menu'
 import { withAuth } from '../providers/AuthProvider';
 
-class Surveys extends Component {
+class MySurveys extends Component {
 
   state = {
     surveys: [],
@@ -63,14 +63,13 @@ class Surveys extends Component {
     }
     return (
       <div className="survey-list">
-        <h1>Welcome {this.props.user.name}</h1>
+        <h1>My Surveys:</h1>
         <Search onSubmit={this.searchSurveys} />
-        <h2>Survey List:</h2>
-        <SurveyList surveys={surveys2} isLoading={isLoading}/>
+        <MySurveysList surveys={surveys2} isLoading={isLoading}/>
         <Menu />
       </div>
     )
   }
 }
 
-export default withAuth(Surveys);
+export default withAuth(MySurveys);

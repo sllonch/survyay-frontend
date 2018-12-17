@@ -28,6 +28,11 @@ class Survey {
     return this.survey.post('API/survey/new', { participants, title, answers, owner })
     .then(({ data }) => data);
   }
+
+  delete(id) {
+    return this.survey.delete(`/API/survey/${id}/delete`)
+    .then(({ data }) => data);
+  }
 }
 
 /*

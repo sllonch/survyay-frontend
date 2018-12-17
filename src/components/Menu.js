@@ -19,14 +19,26 @@ class Menu extends Component {
               <p>New survey</p>
             </div>
           </Link>
-          <div onClick={this.props.logout} className="one-fourth">
-            <div className="sticky-logout" />
-            <p>Logout</p>
-          </div>
+          <Link className="link" to={"/profile"}>
+            <div className="one-fourth">
+             <div className="sticky-profile" />
+              <p>My profile</p>
+            </div>
+          </Link>
         </div>
       </div>
     );
   }
 }
+
+/* 
+
+<div onClick={this.props.logout} className="one-fourth">
+            <div className="sticky-profile" />
+            <p>My profile</p>
+          </div>
+
+*/
+
 
 export default withAuth(Menu);

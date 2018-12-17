@@ -26,8 +26,6 @@ class NewSurvey extends Component {
   handleFormSubmit = (event) => {
     event.preventDefault();
     const { participants, title, answers } = this.state;
-    console.log(this.state)
-    console.log(answers)
     const owner = this.props.user._id;
     SurveyService.create({ participants, title, answers}, owner )
       .then( (survey) => {
@@ -39,14 +37,14 @@ class NewSurvey extends Component {
   }
 
   handleChange = (event) => {  
-    const {name, value} = event.target;
-    this.setState({[name]: value});
+    const {value} = event.target
+    this.setState({title: value})
   }
 
   handleParticipantNameChange = (index) => (event) => {
     const newParticipants = this.state.participants.map((participant, sindex) => {
       if (index !== sindex) return participant;
-      return { ...participant, email: event.target.value };
+      return { ...participant, email: event.target.value }
     });
 
     this.setState({ participants: newParticipants });
@@ -66,8 +64,8 @@ class NewSurvey extends Component {
 
   handleAnswerNameChange = (index) => (event) => {
     const newAnswers = this.state.answers.map((answer, sindex) => {
-      if (index !== sindex) return answer;
-      return { ...answer, answerTitle: event.target.value };
+      if (index !== sindex) return answer
+      return { ...answer, answerTitle: event.target.value }
     });
 
     this.setState({ answers: newAnswers });
@@ -117,26 +115,26 @@ class NewSurvey extends Component {
                 value={participants.email}
                 onChange={this.handleParticipantNameChange(index)}
               />
-              <button type="button" onClick={this.handleRemoveParticipant(index)} className="small">-</button>
+              <button type="button" onClick={this.handleRemoveParticipant(index)} className="minus-btn">-</button>
             </div>
           ))}
-          <button type="button" onClick={this.handleAddParticipant} className="small">Add Participant</button>
+          <button type="button" onClick={this.handleAddParticipant} className="plus-btn">+</button>
           <label>Title:</label>
-          <input type="text" name="title" value={title} onChange={this.handleChange} placeholder="Type your question title" required={true}/>
+          <input type="text" name="title" value={title} onChange={this.handleChange} placeholder="Type the question title" required={true}/>
           <label>Answers:</label>
           {answers.map((answer, index) => (
-            <div className="answer">
+            <div className="answers">
               <input key={`id=${index}`}
                 type="text"
                 placeholder={`Answer #${index + 1} title`}
                 value={answer.answerTitle}
                 onChange={this.handleAnswerNameChange(index)}
               />
-              <button type="button" onClick={this.handleRemoveAnswer(index)} className="small">-</button>
+              <button type="button" onClick={this.handleRemoveAnswer(index)} className="minus-btn">-</button>
             </div>
           ))}
-          <button type="button" onClick={this.handleAddAnswer} className="small">Add Answer</button>
-          <button>Create Survey</button>
+          <button type="button" onClick={this.handleAddAnswer} className="plus-btn">+</button>
+          <button className="submit">Create survey</button>
         </form>
         <Menu />
       </div>
