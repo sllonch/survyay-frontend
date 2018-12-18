@@ -1,9 +1,12 @@
 import React, { Component } from "react";
+import ToggleButton from "react-toggle-button";
 import { Bar, Pie } from "react-chartjs-2";
 
 class Chart extends Component {
   constructor(props) {
     super(props);
+    this.state = { checked: false };
+    this.handleChange = this.handleChange.bind(this);
 
     this.state = {
       chartData: {
@@ -38,28 +41,66 @@ class Chart extends Component {
       }
     };
   }
+
+  handleChange(value) {
+    this.setState({ checked: !value });
+  }
+
   render() {
     return (
       <div className="chart">
-        <Bar
-          data={this.state.chartData}
-          width={100}
-          height={200}
-          options={{
-            maintainAspectRatio: false,
-            scales: {
-                yAxes: [{
-                  gridLines: {
-                    display:true
-                },   
-                    ticks: {
-                        beginAtZero:true,
-                        display: true
-                    }
-                }]
-            }
-        }}
+        <ToggleButton
+          inactiveLabel={'Pie'}
+          activeLabel={'Bar'}
+          value={this.state.checked || false}
+          onToggle={this.handleChange}
         />
+        {!this.state.checked && (
+          <Bar
+            data={this.state.chartData}
+            width={100}
+            height={200}
+            options={{
+              maintainAspectRatio: false,
+              scales: {
+                yAxes: [
+                  {
+                    gridLines: {
+                      display: true
+                    },
+                    ticks: {
+                      beginAtZero: true,
+                      display: true
+                    }
+                  }
+                ]
+              }
+            }}
+          />
+        )}
+        {this.state.checked && (
+          <Pie
+            data={this.state.chartData}
+            width={100}
+            height={200}
+            options={{
+              maintainAspectRatio: false,
+              scales: {
+                yAxes: [
+                  {
+                    gridLines: {
+                      display: true
+                    },
+                    ticks: {
+                      beginAtZero: true,
+                      display: true
+                    }
+                  }
+                ]
+              }
+            }}
+          />
+        )}
       </div>
     );
   }
