@@ -70,7 +70,8 @@ class Chart extends Component {
                     },
                     ticks: {
                       beginAtZero: true,
-                      display: true
+                      display: true,
+                      fixedStepSize: 1
                     }
                   }
                 ]
@@ -89,11 +90,11 @@ class Chart extends Component {
                 yAxes: [
                   {
                     gridLines: {
-                      display: true
+                      display: false
                     },
                     ticks: {
-                      beginAtZero: true,
-                      display: true
+                      beginAtZero: false,
+                      display: false
                     }
                   }
                 ]

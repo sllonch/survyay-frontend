@@ -9,6 +9,7 @@ class Signup extends Component {
     name: "",
     email: "",
     password: "",
+    statusError: "",
   };
 
   handleFormSubmit = (event) => {
@@ -26,7 +27,7 @@ class Signup extends Component {
         });
         this.props.setUser(user)
       })
-      .catch( error => console.log(error) )
+      .catch( error => this.setState({statusError: error.response.data.error}) )
   }
 
   handleChange = (event) => {  
@@ -35,7 +36,7 @@ class Signup extends Component {
   }
 
   render() {
-    const { name, email, password } = this.state;
+    const { name, email, password, statusError } = this.state;
     return (
       <div>
         <h1 className="register-title">Register to Survyay!</h1>
@@ -46,6 +47,7 @@ class Signup extends Component {
           <input type="email" name="email" value={email} onChange={this.handleChange} placeholder="example@example.com" required={true}/>
           <label>Password:</label>
           <input type="password" name="password" value={password} onChange={this.handleChange} placeholder="Must have at least 6 characters" required={true}/>
+          {statusError ? <h4 className="error-msg">{statusError}</h4> : ''}
           <input className="submit" type="submit" value="SIGNUP" />
         </form>
 

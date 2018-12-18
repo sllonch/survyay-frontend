@@ -138,6 +138,10 @@ p {
   margin-bottom: 20px;
 }
 
+.error-msg {
+  color: rgb(213, 51, 68);
+}
+
 /* ---- Survey list page ---- */
 
 .survey {

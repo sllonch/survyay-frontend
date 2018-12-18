@@ -7,6 +7,7 @@ class Login extends Component {
   state = {
     email: "",
     password: "",
+    statusError: "",
   }
 
   handleFormSubmit = (event) => {
@@ -17,7 +18,7 @@ class Login extends Component {
     .then( (user) => {
       this.props.setUser(user);
     })
-    .catch( error => console.log(error) )
+    .catch( error => this.setState({statusError: error.response.data.error}) )
   }
 
   handleChange = (event) => {  
@@ -26,7 +27,7 @@ class Login extends Component {
   }
 
   render() {
-    const { email, password } = this.state;
+    const { email, password, statusError } = this.state;
     return (
       <div>
       <h1 className="login-title">Welcome to Survyay!</h1>
@@ -35,6 +36,7 @@ class Login extends Component {
         <input type="email" name="email" value={email} onChange={this.handleChange}/>
         <label>Password:</label>
         <input type="password" name="password" value={password} onChange={this.handleChange} />
+        {statusError ? <h4 className="error-msg">{statusError}</h4> : ''}
         <input className="submit" type="submit" value="LOGIN" />
       </form>
 

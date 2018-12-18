@@ -10,9 +10,9 @@ class Survey extends Component {
   state = {
     survey: {},
     answer: "",
-    error: false,
     isLoading : true,
-    redirect: false
+    redirect: false,
+    statusError: "",
   }
 
   componentDidMount () {
@@ -42,7 +42,11 @@ class Survey extends Component {
             redirect: true
         });
       })
-      .catch( error => console.log(error) )
+      .catch( error => {
+        console.log(error);
+        console.log(error.response.data.error);
+        this.setState({statusError: error.response.data.error});
+      })
   }
 
   handleChange = (event) => {  
@@ -51,12 +55,9 @@ class Survey extends Component {
   }
 
   render() {
-    let { survey, error, isLoading, redirect } = this.state;
+    let { survey, isLoading, redirect, statusError } = this.state;
     if (isLoading) {
       return <div>Loading...</div>
-    }
-    if (error) {
-      return <div>Error during the connection</div>
     }
     if (redirect) {
       return <Redirect to='/surveys'/>;
@@ -78,6 +79,7 @@ class Survey extends Component {
               );
             })}
           </div>
+          {statusError ? <h4 className="error-msg">{statusError}</h4> : ''}
           <input id="vote" className="submit" type="submit" value="Vote" />
         </form>
         <Menu />

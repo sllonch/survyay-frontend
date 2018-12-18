@@ -114,6 +114,7 @@ class NewSurvey extends Component {
                 placeholder={`Email of participant #${index + 1}`}
                 value={participants.email}
                 onChange={this.handleParticipantNameChange(index)}
+                required={true}
               />
               <button type="button" onClick={this.handleRemoveParticipant(index)} className="minus-btn">-</button>
             </div>
@@ -129,6 +130,7 @@ class NewSurvey extends Component {
                 placeholder={`Answer #${index + 1} title`}
                 value={answer.answerTitle}
                 onChange={this.handleAnswerNameChange(index)}
+                required={true}
               />
               <button type="button" onClick={this.handleRemoveAnswer(index)} className="minus-btn">-</button>
             </div>
