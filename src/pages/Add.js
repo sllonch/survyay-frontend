@@ -19,9 +19,7 @@ class Add extends Component {
   handleFormSubmit = (event) => {
     event.preventDefault();
     const { participants } = this.state;
-    console.log(participants)
     const id = this.props.match.params.id;
-    console.log(id)
     SurveyService.addParticipants({ participants }, id )
       .then( (survey) => {
         this.setState({
