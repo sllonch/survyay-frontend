@@ -42,7 +42,7 @@ class MySurveys extends Component {
       return (
         <div>
           <h1>Welcome {this.props.user.name}</h1>
-          <div>You do not have any survey</div>
+          <div>You have not created any survey</div>
           <Menu />
         </div>
       )

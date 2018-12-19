@@ -6,6 +6,7 @@ import Surveys from './pages/Surveys';
 import MySurveys from './pages/MySurveys';
 import Survey from './pages/Survey';
 import Results from './pages/Results'
+import Add from './pages/Add'
 import New from './pages/New';
 import Profile from './pages/Profile';
 import EditProfile from './pages/EditProfile';
@@ -32,7 +33,8 @@ class App extends Component {
               <PrivateRoute exact path="/surveys" component={Surveys} />
               <PrivateRoute path="/surveys/new" component={New} />
               <PrivateRoute exact path="/surveys/:id" component={Survey} />
-              <PrivateRoute path="/surveys/:id/results" component={Results} />
+              <PrivateRoute exact path="/surveys/:id/results" component={Results} />
+              <PrivateRoute exact path="/surveys/:id/add" component={Add} />
               <Route component={NotFound} />
           </Switch>
         </div>

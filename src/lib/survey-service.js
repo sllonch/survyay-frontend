@@ -34,21 +34,17 @@ class Survey {
     .then(({ data }) => data);
   }
 
+  addParticipants(survey, id) {
+    const { participants } = survey;
+    return this.survey.put(`API/survey/${id}/add`, { participants, id })
+    .then(({ data }) => data);
+  }
+
   delete(id) {
     return this.survey.delete(`/API/survey/${id}/delete`)
     .then(({ data }) => data);
   }
 }
-
-/*
-survey.list() DONE
-survey.detail(idSurvey) DONE
-survey.search( { user: string, text: string } ) DONE IN FE
-survey.create( { surveyTitle: string, answers: array } )
-survey.read(idSurvey)
-survey.update({idSurvey, idAnswer}) DONE
-survey.results(idSurvey)
-*/
 
 const survey = new Survey();
 

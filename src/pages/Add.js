@@ -4,18 +4,12 @@ import SurveyService from '../lib/survey-service';
 import Menu from '../components/Menu'
 import { withAuth } from '../providers/AuthProvider';
 
-class NewSurvey extends Component {
+class Add extends Component {
 
   state = {
     email: '',
     participants: [{
       email: ''
-    }],
-    title: '',
-    answerTitle: '',
-    answers: [{ 
-      answerTitle: '', 
-      votes: 0 
     }],
     error: false,
     isLoading: false,
@@ -24,20 +18,17 @@ class NewSurvey extends Component {
 
   handleFormSubmit = (event) => {
     event.preventDefault();
-    const { participants, title, answers } = this.state;
-    const owner = this.props.user._id;
-    SurveyService.create({ participants, title, answers}, owner )
+    const { participants } = this.state;
+    console.log(participants)
+    const id = this.props.match.params.id;
+    console.log(id)
+    SurveyService.addParticipants({ participants }, id )
       .then( (survey) => {
         this.setState({
             redirect: true
         });
       })
       .catch( error => console.log(error) )
-  }
-
-  handleChange = (event) => {  
-    const {value} = event.target
-    this.setState({title: value})
   }
 
   handleParticipantNameChange = (index) => (event) => {
@@ -61,32 +52,9 @@ class NewSurvey extends Component {
     });
   }
 
-  handleAnswerNameChange = (index) => (event) => {
-    const newAnswers = this.state.answers.map((answer, sindex) => {
-      if (index !== sindex) return answer
-      return { ...answer, answerTitle: event.target.value }
-    });
-
-    this.setState({ answers: newAnswers });
-  }
-
-  handleAddAnswer = () => {
-    this.setState({
-      answers: this.state.answers.concat([{ answerTitle: '', votes: 0 }])
-    });
-  }
-
-  handleRemoveAnswer = (index) => () => {
-    this.setState({
-      answers: this.state.answers.filter((s, sindex) => index !== sindex)
-    });
-  }
-
   render() {
     let { 
       participants,
-      title,
-      answers,
       error, 
       isLoading, 
       redirect 
@@ -99,18 +67,18 @@ class NewSurvey extends Component {
       return <div>Error during the connection</div>
     }
     if (redirect) {
-      return <Redirect to='/surveys'/>
+      return <Redirect to='/my-surveys'/>
     }
     return (
       <div className="new-survey">
-      <h2 className="new-survey-title">New Survey:</h2>
+      <h2 className="new-survey-title">Add Participants:</h2>
         <form id="mew-survey-form" onSubmit={this.handleFormSubmit}>
           <label>Participants:</label>
           {participants.map((participant, index) => (
             <div className="participant">
               <input key={`id=${index}`}
                 type="email"
-                placeholder={`Email of participant #${index + 1}`}
+                placeholder={`Email of extra participant #${index + 1}`}
                 value={participants.email}
                 onChange={this.handleParticipantNameChange(index)}
                 required={true}
@@ -119,23 +87,7 @@ class NewSurvey extends Component {
             </div>
           ))}
           <button type="button" onClick={this.handleAddParticipant} className="plus-btn">+</button>
-          <label>Title:</label>
-          <input type="text" name="title" value={title} onChange={this.handleChange} placeholder="Type the question title" required={true}/>
-          <label>Answers:</label>
-          {answers.map((answer, index) => (
-            <div className="answers">
-              <input key={`id=${index}`}
-                type="text"
-                placeholder={`Answer #${index + 1} title`}
-                value={answer.answerTitle}
-                onChange={this.handleAnswerNameChange(index)}
-                required={true}
-              />
-              <button type="button" onClick={this.handleRemoveAnswer(index)} className="minus-btn">-</button>
-            </div>
-          ))}
-          <button type="button" onClick={this.handleAddAnswer} className="plus-btn">+</button>
-          <button className="submit">Create survey</button>
+          <button className="submit">Add participants</button>
         </form>
         <Menu />
       </div>
@@ -143,4 +95,4 @@ class NewSurvey extends Component {
   }
 }
 
-export default withAuth(NewSurvey);
+export default withAuth(Add);

@@ -33,9 +33,9 @@ class Login extends Component {
       <h1 className="login-title">Welcome to Survyay!</h1>
       <form onSubmit={this.handleFormSubmit}>
         <label>Email:</label>
-        <input type="email" name="email" value={email} onChange={this.handleChange}/>
+        <input type="email" name="email" value={email} onChange={this.handleChange} required={true}/>
         <label>Password:</label>
-        <input type="password" name="password" value={password} onChange={this.handleChange} />
+        <input type="password" name="password" value={password} onChange={this.handleChange} required={true}/>
         {statusError ? <h4 className="error-msg">{statusError}</h4> : ''}
         <input className="submit" type="submit" value="LOGIN" />
       </form>

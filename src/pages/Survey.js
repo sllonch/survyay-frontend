@@ -43,8 +43,6 @@ class Survey extends Component {
         });
       })
       .catch( error => {
-        console.log(error);
-        console.log(error.response.data.error);
         this.setState({statusError: error.response.data.error});
       })
   }
@@ -60,7 +58,7 @@ class Survey extends Component {
       return <div>Loading...</div>
     }
     if (redirect) {
-      return <Redirect to='/surveys'/>;
+      return <Redirect to={`/surveys/${survey._id}/results`}/>
     }
 
     return (
@@ -80,7 +78,7 @@ class Survey extends Component {
             })}
           </div>
           {statusError ? <h4 className="error-msg">{statusError}</h4> : ''}
-          <input id="vote" className="submit" type="submit" value="Vote" />
+          <input id="vote" className="submit" type="submit" value="Vote and see results" />
         </form>
         <Menu />
       </div>
