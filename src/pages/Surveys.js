@@ -55,7 +55,6 @@ class Surveys extends Component {
       <div>
         <h1>Welcome {this.props.user.name}</h1>
         <Search onSubmit={this.searchSurveys} />
-        <h2>Survey List:</h2>
         <div>No surveys matched your search criteria</div>
         <Menu />
       </div>

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Menu from '../components/Menu'
+import auth from '../lib/auth-service';
 import { withAuth } from '../providers/AuthProvider';
 import { Redirect } from 'react-router-dom';
 
@@ -9,13 +10,20 @@ class EditProfile extends Component {
     name: "",
     email: "",
     password: "",
-    isLoading : true,
     redirect: false,
     statusError: "",
   }
 
   handleFormSubmit = (event) => {
     event.preventDefault();
+    const {name, email} = this.state;
+
+    auth.edit({ name, email })
+    .then( (user) => {
+      this.props.setUser(user);
+    })
+    .catch( error => this.setState({statusError: error.response.data.error}) )
+
     this.setState({ redirect: true });
   }
 

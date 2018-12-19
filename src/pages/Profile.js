@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Menu from '../components/Menu'
+import auth from '../lib/auth-service';
 import { withAuth } from '../providers/AuthProvider';
 import { Link } from "react-router-dom";
 
