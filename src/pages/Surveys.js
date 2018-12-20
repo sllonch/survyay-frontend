@@ -4,6 +4,7 @@ import Search from '../components/Search'
 import SurveyList from '../components/SurveyList'
 import Menu from '../components/Menu'
 import { withAuth } from '../providers/AuthProvider';
+import MDSpinner from 'react-md-spinner';
 
 class Surveys extends Component {
 
@@ -39,7 +40,7 @@ class Surveys extends Component {
       return survey.title.includes(searchValue);
     });
     if (isLoading) {
-      return <div>Loading...</div>
+      return <MDSpinner className="spinner" size={320} />
     }
     if (surveys.length === 0) { // First render
       return (

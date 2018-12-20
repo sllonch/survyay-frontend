@@ -4,6 +4,7 @@ import { Redirect } from 'react-router-dom';
 // import AnswerList from '../components/AnswerList'
 import Menu from '../components/Menu'
 import { withAuth } from '../providers/AuthProvider';
+import MDSpinner from 'react-md-spinner';
 
 class Survey extends Component {
 
@@ -55,7 +56,7 @@ class Survey extends Component {
   render() {
     let { survey, isLoading, redirect, statusError } = this.state;
     if (isLoading) {
-      return <div>Loading...</div>
+      return <MDSpinner className="spinner" size={320} />
     }
     if (redirect) {
       return <Redirect to={`/surveys/${survey._id}/results`}/>

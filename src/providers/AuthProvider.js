@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import auth from '../lib/auth-service';
+import MDSpinner from 'react-md-spinner';
 
 const AuthContext = React.createContext();
 
@@ -70,7 +71,7 @@ class AuthProvider extends Component {
 
   render() {
     if (this.state.isLoading) {
-      return <div>Loading....</div>
+      return <MDSpinner className="spinner" size={320} />
     }
     return <div>
       <Provider value={{

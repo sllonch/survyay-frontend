@@ -3,6 +3,7 @@ import SurveyService from '../lib/survey-service';
 import Menu from '../components/Menu'
 import Chart from '../components/Chart'
 import { withAuth } from '../providers/AuthProvider';
+import MDSpinner from 'react-md-spinner';
 
 class Results extends Component {
 
@@ -30,7 +31,7 @@ class Results extends Component {
   render() {
     let { survey, error, isLoading } = this.state;
     if (isLoading) {
-      return <div>Loading...</div>
+      return <MDSpinner className="spinner" size={320} />
     }
     if (error) {
       return <div>Error during the connection</div>

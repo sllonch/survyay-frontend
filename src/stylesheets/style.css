@@ -494,6 +494,11 @@ form .submit {
   font-size: 16px;
 }
 
+.spinner {
+  padding-top: 50%;
+  padding-left: 50%;
+}
+
 .button-alt {
   color: blue;
   background-color: #fff;
