@@ -15,6 +15,7 @@ class Home extends Component {
 
   renderIsNotLoggedIn = () => {
     return <div>
+      <p className="signup-copy">Ceate online surveys and polls in just a few short steps!</p>
       <Link to='/login'><button className="btn">LOGIN</button></Link>
       <p className="signup-helper">New to Survyay?</p>
       <Link to='/signup'><button className="btn">SIGNUP</button></Link>

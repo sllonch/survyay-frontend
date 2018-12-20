@@ -39,6 +39,7 @@ class Signup extends Component {
     const { name, email, password, statusError } = this.state;
     return (
       <div>
+        <Link className="link" to={"/"}><div className="logoH"></div></Link>
         <h1 className="register-title">Register to Survyay!</h1>
         <form onSubmit={this.handleFormSubmit}>
           <label>Name:</label>
@@ -50,11 +51,9 @@ class Signup extends Component {
           {statusError ? <h4 className="error-msg">{statusError}</h4> : ''}
           <input className="submit" type="submit" value="SIGNUP" />
         </form>
-
         <p>Already have an account? 
           <Link className="link" to={"/login"}> Login</Link>
         </p>
-
       </div>
     )
   }

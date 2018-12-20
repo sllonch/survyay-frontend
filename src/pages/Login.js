@@ -30,20 +30,19 @@ class Login extends Component {
     const { email, password, statusError } = this.state;
     return (
       <div>
-      <h1 className="login-title">Welcome to Survyay!</h1>
-      <form onSubmit={this.handleFormSubmit}>
-        <label>Email:</label>
-        <input type="email" name="email" value={email} onChange={this.handleChange} required={true}/>
-        <label>Password:</label>
-        <input type="password" name="password" value={password} onChange={this.handleChange} required={true}/>
-        {statusError ? <h4 className="error-msg">{statusError}</h4> : ''}
-        <input className="submit" type="submit" value="LOGIN" />
-      </form>
-
-        <p>New to Survyay? 
-          <Link className="link" to={"/signup"}> Signup</Link>
-        </p>
-
+        <Link className="link" to={"/"}><div className="logoH"></div></Link>
+        <h1 className="login-title">Welcome to Survyay!</h1>
+        <form onSubmit={this.handleFormSubmit}>
+          <label>Email:</label>
+          <input type="email" name="email" value={email} onChange={this.handleChange} required={true}/>
+          <label>Password:</label>
+          <input type="password" name="password" value={password} onChange={this.handleChange} required={true}/>
+          {statusError ? <h4 className="error-msg">{statusError}</h4> : ''}
+          <input className="submit" type="submit" value="LOGIN" />
+        </form>
+          <p>New to Survyay? 
+            <Link className="link" to={"/signup"}> Signup</Link>
+          </p>
       </div>
     )
   }
