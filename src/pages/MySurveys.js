@@ -38,6 +38,9 @@ class MySurveys extends Component {
     const surveys2 = surveys.filter(survey => {
       return survey.title.includes(searchValue);
     });
+    if (isLoading) {
+      return <div>Loading...</div>
+    }
     if (surveys.length === 0) { // First render
       return (
         <div>
