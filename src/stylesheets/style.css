@@ -247,6 +247,10 @@ p {
 
 /* ---- Survey page ---- */
 
+.survey-page {
+  margin-bottom: 78px;
+}
+
 #survey-form label {
   padding: 0px;
   margin: 0px;
